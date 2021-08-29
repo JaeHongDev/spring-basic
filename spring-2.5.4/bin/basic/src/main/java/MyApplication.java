@@ -1,4 +1,0 @@
-@Rest
-public class MyApplication {
-  
-}
