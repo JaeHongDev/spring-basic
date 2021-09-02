@@ -29,9 +29,6 @@ public class UserController {
 
   @PostMapping("/user/create")
   public List<User> userCreateRouter(@RequestParam Map<String,String> params){
-    User user = new User();
-    user.setname(params.get("name")); 
-    user.setemail(params.get("email"));
 
     
     UserRepository userRepository = new UserRepository();
