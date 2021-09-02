@@ -1,23 +1,35 @@
 package com.example.ikmyeongshop.domain.user;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import com.example.ikmyeongshop.global.util.GenerateId;
+import com.example.ikmyeongshop.global.util.Generate;
 
 public class UserRepository {
-  private  List<User> users = new List<User>();
+  private static final List<User> users = new ArrayList<User>();
 
   public void add(String name, String email){
     //get generated id
-    int id = new GenerateId().generateById("USER");
-    
-    
-    //users.add(user);
+    int id = new Generate().getNextId("USER");
+    User user = new User();
+    user.setid(id);
+    user.setname(name);
+    user.setemail(email);
+
+    users.add(user);
+
+    System.out.println("Success user create");
   }
 
 
+  public User findByEmail(String email){ 
+    return users.stream().filter(user->user.getemail() == email ).collect(Collectors.toList());
+
+  }
+
   public List<User> all(){
-    return this.users;
+    return users;
   }
 
 }
@@ -94,4 +106,4 @@ public class HelloWorld{
      
 }
 
-*//
+*/

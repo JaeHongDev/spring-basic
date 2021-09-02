@@ -30,33 +30,24 @@ public class UserController {
   @PostMapping("/user/create")
   public List<User> userCreateRouter(@RequestParam Map<String,String> params){
 
+    //String name = params.get("name");
+    //String email = params.get("email");
+
+
+    String name = "aaa";
+    String email = "bbb";
     
     UserRepository userRepository = new UserRepository();
-    userRepository.add(user);
-
+    userRepository.add(name,email);
+    
     return userRepository.all();
   }
 }
 
-/*
-  RequestParam의 값을 타입에 맞게 집어 넣을 수 없을까? 
-  ex) @RequestParam UserCreateInterface userCreate
+
+@PostMapping("/auth/login")
+public User userLoginRouter(@RequestParam map<String, String> params) {
+  String email = "bbb";
+
   
-  만약 값이 1대1 대응이 안되면 오류가 발생하도록
-  publc interface UserCreateInterface{
-    int id
-    String name
-    String email
-  }
-
-  requestParamValue{
-    id:1
-    errorKey:11 // confirm error : request key errorKey did not correct by UserCreateInterface 
-  } // confirm error: request key did not exists
-
-
-*/
-
-
-//https://cheese10yun.github.io/spring-guide-directory/
-//폴더 구조 참고하기
+}
